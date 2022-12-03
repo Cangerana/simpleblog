@@ -1,0 +1,47 @@
+<%= form_with(model: post) do |f| %>
+  <% if post.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+        <% post.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= f.hidden_field :author_id, value: @author_id %>
+  </div>
+
+  <div>
+    <%= f.label :title, 'Title' %>
+  </div>
+
+  <div>
+    <%= f.text_field :title %>
+  </div>
+
+  <div>
+    <%= f.label :content, 'Content' %>
+  </div>
+
+  <div>
+    <%= f.text_area :content %>
+  </div>
+
+    <div>
+    <%= f.label :tag_id, 'Tag' %>
+  </div>
+
+  <div>
+    <%= f.select :tag_id,
+                 options_from_collection_for_select(Tag.all, :id, :name),
+                 {prompt: "Select  a tag"} %>
+  </div>
+
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>

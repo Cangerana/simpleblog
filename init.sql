@@ -1,0 +1,2 @@
+CREATE USER blog_admin SUPERUSER;
+ALTER USER blog_admin PASSWORD 'tt11tt11';
