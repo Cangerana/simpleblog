@@ -1,25 +1,41 @@
-<%= form_with(model: tag) do |f| %>
-  <% if tag.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(tag.errors.count, "error") %> prohibited this tag from being saved:</h2>
+<div class="container-fluid main-container">
+  <div class="col-md-offset-2 col-md-8 content">
+    <div class="panel panel-defaul">
+      <div class="panel-heading">
+        <h1>Tag</h1>
+      </div>
+    
+      <div class="panel-body">
+        <%= form_with(model: tag, class: 'form') do |f| %>
+          <% if tag.errors.any? %>
+            <div style="color: red">
+              <h2><%= pluralize(tag.errors.count, "error") %> prohibited this tag from being saved:</h2>
 
-      <ul>
-        <% tag.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+              <ul>
+                <% tag.errors.each do |error| %>
+                  <li><%= error.full_message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <%= f.label :name, 'Name' %>
+              <%= f.text_field :name, class: 'form-control' %>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <%= button_to "Back", method: :get, tags_path, class: 'btn btn-primary pull-left' %>
+            </div>
+
+            <div class="form-group col-md-6">
+              <%= f.submit 'Create', class: 'btn btn-primary pull-right' %>
+            </div>
+          </div>
         <% end %>
-      </ul>
+      </div>
     </div>
-  <% end %>
-
-  <div>
-    <%= f.label :name, 'Name' %>
   </div>
-
-  <div>
-    <%= f.text_field :name %>
-  </div>
-
-  <div>
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

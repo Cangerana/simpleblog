@@ -1,0 +1,44 @@
+<div class="container-fluid main-container" id="tags">
+  <div class="panel panel-defaul">
+    <div class="panel-heading">
+      <h1>Tags</h1>
+    </div>
+  </div>
+
+  <div class="panel-body">
+    <p style="color: green"><%= notice %></p>
+
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+    
+      <tbody>
+        <% @tags.each do |tag| %>  
+          <tr>
+            <th scope="row"><%= tag.id %></th>
+            <td><%= tag.name %></td>
+            <td>
+              <div class="btn-toolbar" role="toolbar">
+                <div class="btn-group" role="group">
+                  <%= link_to "Show", tag_path(tag), method: :show, class: "btn btn-info btn-sm" %>
+                </div>
+                <div class="btn-group" role="group">
+                  <%= link_to "Edit", edit_tag_path(tag), method: :edit, class: "btn btn-warning btn-sm" %>
+                </div>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <div>
+      <%= link_to "New", new_tag_path, class: 'btn btn-primary pull-right', method: :get %>
+    </div>
+  </div>
+</div>

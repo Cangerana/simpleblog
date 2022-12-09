@@ -1,0 +1,48 @@
+<div class="container-fluid main-container" id="authors">
+  <div class="panel panel-defaul">
+    <div class="panel-heading">
+      <h1>Authors</h1>
+    </div>
+  </div>
+
+  <div class="panel-body">
+    <p style="color: green"><%= notice %></p>
+
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">E-mail</th>
+          <th scope="col">Site</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+    
+      <tbody>
+        <% @authors.each do |author| %>  
+          <tr>
+            <th scope="row"><%= author.id %></th>
+            <td><%= author.name %></td>
+            <td><%= author.email %></td>
+            <td><%= author.site %></td>
+            <td>
+              <div class="btn-toolbar" role="toolbar">
+                <div class="btn-group" role="group">
+                  <%= link_to "Show", author_path(author), method: :show, class: "btn btn-info btn-sm" %>
+                </div>
+                <div class="btn-group" role="group">
+                  <%= link_to "Edit", edit_author_path(author), method: :edit, class: "btn btn-warning btn-sm" %>
+                </div>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <div>
+      <%= link_to "New", new_author_path, class: 'btn btn-primary pull-right', method: :get %>
+    </div>
+  </div>
+</div>

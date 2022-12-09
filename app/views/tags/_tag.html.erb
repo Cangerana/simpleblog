@@ -1,2 +1,73 @@
 <div id="<%= dom_id tag %>">
+  <div class="container-fluid main-container">
+    <div class="col-md-offset-2 col-md-8 content">
+      <div class="panel panel-defaul">
+        <div class="panel-heading">
+          <h1>Tag</h1>
+        </div>
+      
+        <div class="panel-body">
+          <div class="row well">
+            <div class="col-md-6">
+              <strong>Name</strong>
+              <p><%= @tag.name %></p>
+            </div>
+            <div class="col-md-6">
+              <strong>Posts:</strong>
+              <p><%= @tag.posts.size %></p>
+            </div>
+          </div>
+
+          <div class="row well">
+            <div class="col-md-12">
+              <h3><b>Post:</b></h4>
+              
+              <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Tag</th>
+                    <th scope="col">Content</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+              
+                <tbody>
+                  <% @tag.posts.each do |post| %>  
+                    <tr>
+                      <th scope="row"><%= post.id %></th>
+                      <td><%= post.title %></td>
+                      <td><%= post.tag.name %></td>
+                      <td><%= markdown(post.content[2..10]) %></td>
+                      <td>
+                        <div class="btn-toolbar" role="toolbar">
+                          <div class="btn-group" role="group">
+                            <%= link_to "Show", post_path(post), method: :show, class: "btn btn-info btn-sm" %>
+                          </div>
+                          <div class="btn-group" role="group">
+                            <%= link_to "Edit", edit_post_path(post), method: :edit, class: "btn btn-warning btn-sm" %>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <%= button_to "Delete", @tag, method: :delete, class: 'btn btn-primary pull-left' %>
+            </div>
+
+            <div class="col-md-6">
+              <%= button_to "Back", tags_path, method: :get,  class: 'btn btn-primary pull-right' %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

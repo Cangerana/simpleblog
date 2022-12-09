@@ -31,6 +31,8 @@ gem 'bootstrap-sass', '~> 3.4.1'
 
 gem 'sassc-rails', '>= 2.1.0'
 
+# render markdown texts 
+gem 'redcarpet', '~> 3.5.1'
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
