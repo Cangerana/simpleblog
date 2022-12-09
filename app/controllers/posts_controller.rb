@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
-
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate, except: [:index, :new, :show, :create]
+  
   # GET /posts or /posts.json
   def index
     @posts = Post.all
@@ -12,18 +14,17 @@ class PostsController < ApplicationController
 
   # GET /posts/new
   def new
-    @post = Post.new
-    @author_id = current_autor
+    @post = Post.new 
   end
 
   # GET /posts/1/edit
   def edit
-    @author_id = current_autor
   end
 
   # POST /posts or /posts.json
   def create
     @post = Post.new(post_params)
+    @post.author_id = current_user.author.id
 
     respond_to do |format|
       if @post.save
@@ -68,5 +69,14 @@ class PostsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def post_params
       params.fetch(:post, {}).permit(:title, :content, :author_id, :tag_id)
+    end
+
+    def authenticate
+      unless @post.author.user == current_user
+        respond_to do |format|
+          format.html { redirect_to posts_url, notice: "Can't edit thit Post." }
+          format.json { head :no_content }
+        end
+      end
     end
 end

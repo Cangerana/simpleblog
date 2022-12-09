@@ -27,12 +27,9 @@
           </div>
 
           <div class="row">
-            <div class="col-md-6">
-              <%= button_to "Delete", @post, method: :delete, class: 'btn btn-primary pull-left' %>
-            </div>
-
-            <div class="col-md-6">
-              <%= button_to "Back", posts_path, method: :get,  class: 'btn btn-primary pull-right' %>
+            <div class="col-md-12">
+              <%= button_to "Delete", @post, method: :delete, class: 'btn btn-primary pull-left' if user_signed_in? %>  
+              <%= link_to "Back", posts_path,  class: 'btn btn-primary pull-right' %>
             </div>
           </div>
         </div>

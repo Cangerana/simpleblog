@@ -1,5 +1,6 @@
 class AuthorsController < ApplicationController
   before_action :set_author, only: %i[ show edit update destroy ]
+  before_action :authenticate, except: [:index, :show]
 
   # GET /authors or /authors.json
   def index
@@ -22,6 +23,7 @@ class AuthorsController < ApplicationController
   # POST /authors or /authors.json
   def create
     @author = Author.new(author_params)
+    @author.user_id = current_user.id
 
     respond_to do |format|
       if @author.save
@@ -65,6 +67,15 @@ class AuthorsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def author_params
-      params.fetch(:author, {}).permit(:name, :email, :site, :profile)
+      params.fetch(:author, {}).permit(:name, :email, :site, :profile, :user_id)
+    end
+
+    def authenticate
+      unless @author.user == current_user
+        respond_to do |format|
+          format.html { redirect_to authors_url, notice: "Can't edit thit Author data." }
+          format.json { head :no_content }
+        end
+      end
     end
 end

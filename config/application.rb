@@ -13,6 +13,8 @@ module Simpleblog
 
     config.web_console.whiny_requests = false
 
+    config.paths['app/views'] << "app/views/devise"
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
