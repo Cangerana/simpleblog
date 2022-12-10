@@ -28,7 +28,7 @@
 
           <div class="row">
             <div class="col-md-12">
-              <%= button_to "Delete", @post, method: :delete, class: 'btn btn-primary pull-left' if user_signed_in? %>  
+              <%= button_to "Delete", @post, method: :delete, class: 'btn btn-primary pull-left' if (user_signed_in? and @post.author.user == current_user) or user_is_admin? %>  
               <%= link_to "Back", posts_path,  class: 'btn btn-primary pull-right' %>
             </div>
           </div>

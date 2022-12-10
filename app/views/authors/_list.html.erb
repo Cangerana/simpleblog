@@ -31,7 +31,7 @@
                 <div class="btn-group" role="group">
                   <%= link_to "Show", author_path(author), method: :show, class: "btn btn-info btn-sm" %>
                 </div>
-                <% if author.user == current_user %>
+                <% if user_is_admin? %>
                   <div class="btn-group" role="group">
                     <%= link_to "Edit", edit_author_path(author), method: :edit, class: "btn btn-warning btn-sm" %>
                   </div>
@@ -43,8 +43,10 @@
       </tbody>
     </table>
 
-    <div>
-      <%= link_to "New", new_author_path, class: 'btn btn-primary pull-right', method: :get %>
-    </div>
+    <% if user_is_admin? %>
+      <div>
+        <%= link_to "New", new_author_path, class: 'btn btn-primary pull-right', method: :get %>
+      </div>
+    <% end %>
   </div>
 </div>

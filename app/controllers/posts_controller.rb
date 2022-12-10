@@ -61,22 +61,21 @@ class PostsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_post
-      @post = Post.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def post_params
-      params.fetch(:post, {}).permit(:title, :content, :author_id, :tag_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_post
+    @post = Post.find(params[:id])
+  end
 
-    def authenticate
-      unless @post.author.user == current_user
-        respond_to do |format|
-          format.html { redirect_to posts_url, notice: "Can't edit thit Post." }
-          format.json { head :no_content }
-        end
-      end
+  # Only allow a list of trusted parameters through.
+  def post_params
+    params.fetch(:post, {}).permit(:title, :content, :author_id, :tag_id)
+  end
+
+  def authenticate
+    return if current_user.is_admin?
+    unless @post.author.user == current_user
+      not_found
     end
+  end
 end

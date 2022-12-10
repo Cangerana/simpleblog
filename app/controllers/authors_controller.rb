@@ -1,6 +1,8 @@
 class AuthorsController < ApplicationController
   before_action :set_author, only: %i[ show edit update destroy ]
-  before_action :authenticate, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate, except: [:index, :show, :new, :create]
+  before_action :authenticate_new_user, only: [:new]
 
   # GET /authors or /authors.json
   def index
@@ -60,22 +62,27 @@ class AuthorsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_author
-      @author = Author.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def author_params
-      params.fetch(:author, {}).permit(:name, :email, :site, :profile, :user_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_author
+    @author = Author.find(params[:id])
+  end
 
-    def authenticate
-      unless @author.user == current_user
-        respond_to do |format|
-          format.html { redirect_to authors_url, notice: "Can't edit thit Author data." }
-          format.json { head :no_content }
-        end
-      end
+  # Only allow a list of trusted parameters through.
+  def author_params
+    params.fetch(:author, {}).permit(:name, :email, :site, :profile, :user_id)
+  end
+
+  def authenticate
+    return if current_user.is_admin?
+    unless @author.user == current_user
+      not_found
     end
+  end
+
+  def authenticate_new_user
+    if current_user.author.present?
+      not_found
+    end
+  end
 end

@@ -1,5 +1,7 @@
 class TagsController < ApplicationController
   before_action :set_tag, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate, except: [:index, :show, :new, :create]
 
   # GET /tags or /tags.json
   def index
@@ -58,13 +60,18 @@ class TagsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_tag
-      @tag = Tag.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def tag_params
-      params.fetch(:tag, {}).permit(:name)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_tag
+    @tag = Tag.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def tag_params
+    params.fetch(:tag, {}).permit(:name)
+  end
+
+  def authenticate
+    not_found
+  end
 end

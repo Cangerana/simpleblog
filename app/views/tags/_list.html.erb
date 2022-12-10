@@ -27,9 +27,11 @@
                 <div class="btn-group" role="group">
                   <%= link_to "Show", tag_path(tag), method: :show, class: "btn btn-info btn-sm" %>
                 </div>
-                <div class="btn-group" role="group">
-                  <%= link_to "Edit", edit_tag_path(tag), method: :edit, class: "btn btn-warning btn-sm" %>
-                </div>
+                <% if user_is_admin? %>
+                  <div class="btn-group" role="group">
+                    <%= link_to "Edit", edit_tag_path(tag), method: :edit, class: "btn btn-warning btn-sm" %>
+                  </div>
+                <% end %>
               </div>
             </td>
           </tr>
@@ -37,8 +39,10 @@
       </tbody>
     </table>
 
-    <div>
-      <%= link_to "New", new_tag_path, class: 'btn btn-primary pull-right', method: :get %>
-    </div>
+    <% if user_is_admin? %>
+      <div>
+        <%= link_to "New", new_tag_path, class: 'btn btn-primary pull-right', method: :get %>
+      </div>
+    <% end %>
   </div>
 </div>

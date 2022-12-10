@@ -38,6 +38,12 @@ gem 'redcarpet', '~> 3.5.1'
 
 gem 'devise', '~> 4.8.1'
 
+# Google authentication
+gem 'omniauth-google-oauth2', '~> 1.1.1'
+
+# Google authentication
+gem 'omniauth-rails_csrf_protection', '~> 1.0.1'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 

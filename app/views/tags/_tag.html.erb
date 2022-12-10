@@ -46,7 +46,7 @@
                             <%= link_to "Show", post_path(post), method: :show, class: "btn btn-info btn-sm" %>
                           </div>
                           <div class="btn-group" role="group">
-                            <%= link_to "Edit", edit_post_path(post), method: :edit, class: "btn btn-warning btn-sm" %>
+                            <%= link_to "Edit", edit_post_path(post), method: :edit, class: "btn btn-warning btn-sm" if (user_signed_in? and post.author.user == current_user) or user_is_admin? %>
                           </div>
                         </div>
                       </td>
@@ -59,7 +59,7 @@
 
           <div class="row">
             <div class="col-md-12">
-              <%= button_to "Delete", @tag, method: :delete, class: 'btn btn-primary pull-left' %>
+              <%= button_to "Delete", @tag, method: :delete, class: 'btn btn-primary pull-left' if user_is_admin? %>
               <%= link_to "Back", tags_path,  class: 'btn btn-primary pull-right' %>
             </div>
           </div>
