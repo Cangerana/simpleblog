@@ -1,0 +1,16 @@
+<div class="container-fluid main-container" id="posts">
+  <div class="text-center">
+    <div class="panel panel-defaul">
+      <div class="panel-heading">
+        <h1>Log in</h1>
+      </div>
+    </div>
+
+    <div class="panel-body">
+      <div class="text-center">
+        <%= button_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path, method: :post, class: 'btn btn-primary' %>  
+      </div>
+    </div>
+  </div>
+</div>
+

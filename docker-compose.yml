@@ -69,6 +69,8 @@ services:
       DATABASE_USER: ${SERVER_DB_USER}
       DATABASE_PASSWORD: ${SERVER_DB_PASS}
       DATABASE_HOST: database
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID}
+      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET}
 
 # Declare the volumes that our application uses.
 volumes:
