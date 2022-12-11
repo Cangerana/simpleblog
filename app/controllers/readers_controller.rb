@@ -60,7 +60,8 @@ class ReadersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_reader
-      @reader = Reader.find(params[:id])
+      @reader = Reader.find_by(id: params[:id])
+      self.send_error_info unless @reader.present?
     end
 
     # Only allow a list of trusted parameters through.
