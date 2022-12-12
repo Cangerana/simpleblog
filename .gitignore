@@ -32,3 +32,5 @@
 /.env
 /TODO
 *.pem
+*.crt
+*.key
