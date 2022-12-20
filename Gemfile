@@ -33,7 +33,7 @@ gem "jbuilder"
 gem 'bootstrap-sass', '~> 3.4.1'
 
 # Gem to work with bootstrap
-gem 'sassc-rails', '>= 2.1.0'
+gem 'sassc-rails', '>= 2.1.2'
 
 # render markdown texts 
 gem 'redcarpet', '~> 3.5.1'
