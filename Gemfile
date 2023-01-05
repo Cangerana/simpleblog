@@ -38,6 +38,8 @@ gem 'sassc-rails', '>= 2.1.2'
 # render markdown texts 
 gem 'redcarpet', '~> 3.5.1'
 
+gem 'sidekiq'
+
 gem 'devise', '~> 4.8.1'
 
 # Google authentication
