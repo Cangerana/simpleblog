@@ -4,45 +4,11 @@
       <h1>Articles</h1>
     </div>
   </div>
-
   <div class="panel-body">
     <p style="color: green"><%= notice %></p>
 
-    <table class="table">
-      <thead class="thead-dark">
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Title</th>
-          <th scope="col">Tag</th>
-          <th scope="col">Content</th>
-          <th scope="col">Action</th>
-        </tr>
-      </thead>
-    
-      <tbody>
-        <% @posts.each do |post| %>  
-          <tr>
-            <th scope="row"><%= post.id %></th>
-            <td><%= post.title %></td>
-            <td><%= post.tag.name %></td>
-            <td><%= "#{post.content[0..20].gsub('#', '') }..." %></td>
-            <td>
-              <div class="btn-toolbar" role="toolbar">
-                <div class="btn-group" role="group">
-                  <%= link_to "Show", post_path(post), method: :show, class: "btn btn-info btn-sm" %>
-                </div>
-                <% if (user_signed_in? and post.author.user == current_user) or user_is_admin? %>
-                  <div class="btn-group" role="group">
-                    <%= link_to "Edit", edit_post_path(post), method: :edit, class: "btn btn-warning btn-sm" %>
-                  </div>
-                <% end %>
-              </div>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-    
+    <%= render 'posts_table', data: @posts.where(visible: true)  %>
+   
     <% if user_signed_in? %>
       <div>
         <%= link_to "New", new_post_path, class: 'btn btn-primary pull-right', method: :get %>
