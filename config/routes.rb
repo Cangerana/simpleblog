@@ -6,7 +6,11 @@ Rails.application.routes.draw do
   root 'posts#index'
 
   resources :tags
-  resources :posts
+
+  resources :posts do 
+    post :filter, on: :collection
+  end
+
   resources :authors
 
   match '*unmatched', to: 'application#send_error_info', via: :all

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_10_184324) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_22_000802) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -28,7 +28,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_10_184324) do
   create_table "posts", force: :cascade do |t|
     t.string "title", null: false, comment: "Title of post"
     t.text "content", null: false, comment: "Post content"
-    t.boolean "visible", comment: "Flag of a post is visible for others users"
+    t.boolean "visible", default: true, null: false, comment: "Flag of a post is visible for others users"
     t.integer "author_id", null: false, comment: "FK to authors table"
     t.integer "tag_id", null: false, comment: "FK to tags table"
     t.datetime "created_at", null: false

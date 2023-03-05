@@ -7,7 +7,9 @@
   <div class="panel-body">
     <p style="color: green"><%= notice %></p>
 
-    <%= render 'posts_table', data: @posts.where(visible: true)  %>
+    <div id="posts_list">
+      <%= render 'posts_table', data: @posts.where(visible: true)  %>
+    <div>
    
     <% if user_signed_in? %>
       <div>
@@ -16,3 +18,8 @@
     <% end %>
   </div>
 </div>
+
+
+<script>
+</script>
+

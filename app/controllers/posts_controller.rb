@@ -60,7 +60,31 @@ class PostsController < ApplicationController
     end
   end
 
+  def filter
+    search = params[:search]
+
+    if search.match? /^[0-9]+$/
+      filter_by_id search.to_i 
+    else
+      filter_by_name search if search.is_numeric?
+    end
+
+    respond_to do |format|
+      format.html
+      format.js
+      format.json
+    end
+  end
+
   private
+
+  def filter_by_id(search)
+    @posts = Post.where(id: search)
+  end
+
+  def filter_by_name(search)
+    @posts = Post.where(id: search)
+  end 
 
   # Use callbacks to share common setup or constraints between actions.
   def set_post
@@ -70,7 +94,7 @@ class PostsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def post_params
-    params.fetch(:post, {}).permit(:title, :content, :author_id, :tag_id)
+    params.fetch(:post, {}).permit(:title, :content, :author_id, :tag_id, :visible)
   end
 
   def authenticate

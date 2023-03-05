@@ -6,6 +6,8 @@ services:
     environment:
       POSTGRES_USER: ${SERVER_DB_USER}
       POSTGRES_PASSWORD: ${SERVER_DB_PASS}
+    ports:
+      - 5433:5432
 
     volumes:
       - db_data:/var/lib/postgresql/data
