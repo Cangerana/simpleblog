@@ -38,7 +38,7 @@ gem 'sassc-rails', '>= 2.1.2'
 # render markdown texts 
 gem 'redcarpet', '~> 3.5.1'
 
-gem 'sidekiq'
+gem 'sidekiq', '>= 7.0.8'
 
 gem 'devise', '~> 4.8.1'
 
