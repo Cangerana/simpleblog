@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "2.7.1"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.0.4"
+gem "rails", "~> 7.0.5", ">= 7.0.5.1"
 
 gem 'nokogiri', '1.13.10'
 
@@ -18,10 +18,10 @@ gem "pg", "~> 1.1"
 gem "puma", "~> 5.0"
 
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
-gem "importmap-rails"
+gem "importmap-rails", ">= 1.1.6"
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
-gem "turbo-rails"
+gem "turbo-rails", ">= 1.3.3"
 
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
@@ -40,7 +40,7 @@ gem 'redcarpet', '~> 3.5.1'
 
 gem 'sidekiq'
 
-gem 'devise', '~> 4.8.1'
+gem 'devise', '~> 4.9.0'
 
 # Google authentication
 gem 'omniauth-google-oauth2', '~> 1.1.1'
