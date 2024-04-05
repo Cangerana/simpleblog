@@ -4,9 +4,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "2.7.1"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.0.4"
+gem "rails", "~> 7.0.8", ">= 7.0.8.1"
 
-gem 'nokogiri', '1.13.10'
+gem 'nokogiri', '1.15.6'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
@@ -18,13 +18,13 @@ gem "pg", "~> 1.1"
 gem "puma", "~> 5.0"
 
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
-gem "importmap-rails"
+gem "importmap-rails", ">= 1.1.6"
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
-gem "turbo-rails"
+gem "turbo-rails", ">= 1.3.3"
 
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
-gem "stimulus-rails"
+gem "stimulus-rails", ">= 1.2.2"
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
@@ -38,12 +38,12 @@ gem 'sassc-rails', '>= 2.1.2'
 # render markdown texts 
 gem 'redcarpet', '~> 3.5.1'
 
-gem 'sidekiq'
+gem 'sidekiq', '>= 7.0.3'
 
-gem 'devise', '~> 4.8.1'
+gem 'devise', '~> 4.9.0'
 
 # Google authentication
-gem 'omniauth-google-oauth2', '~> 1.1.1'
+gem 'omniauth-google-oauth2', '~> 1.1.2'
 
 # Google authentication
 gem 'omniauth-rails_csrf_protection', '~> 1.0.1'
@@ -76,7 +76,7 @@ end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
-  gem "web-console"
+  gem "web-console", ">= 4.2.1"
   gem "byebug"
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
@@ -88,7 +88,7 @@ end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
-  gem "capybara"
+  gem "capybara", ">= 3.39.0"
   gem "selenium-webdriver"
-  gem "webdrivers"
+  gem "webdrivers", ">= 5.3.0"
 end
