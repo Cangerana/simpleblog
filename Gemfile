@@ -43,7 +43,7 @@ gem 'sidekiq'
 gem 'devise', '~> 4.8.1'
 
 # Google authentication
-gem 'omniauth-google-oauth2', '~> 1.1.1'
+gem 'omniauth-google-oauth2', '~> 1.1.2'
 
 # Google authentication
 gem 'omniauth-rails_csrf_protection', '~> 1.0.1'
